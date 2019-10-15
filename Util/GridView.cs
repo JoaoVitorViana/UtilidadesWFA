@@ -12,11 +12,11 @@ namespace UtilidadesWFA.Util
 			dtGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Calibri", pTamanhoFonte);
 		}
 
-		public static string ClickEdit(object sender, DataGridViewCellEventArgs e, DataGridView dtGrid, int index = 0)
+		public static string ClickEdit(object sender, DataGridViewCellEventArgs e, int index = 0)
 		{
 			var senderGrid = (DataGridView)sender;
 			if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-				return dtGrid.Rows[e.RowIndex].Cells[index].Value.ToString();
+				return senderGrid.Rows[e.RowIndex].Cells[index].Value.ToString();
 
 			return null;
 		}
@@ -33,7 +33,6 @@ namespace UtilidadesWFA.Util
                     ret.Add(valor);
                 }
             }
-
             return ret;
         }
 	}

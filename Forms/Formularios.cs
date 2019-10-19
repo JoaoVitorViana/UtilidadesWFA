@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace UtilidadesWFA.Util
+namespace UtilidadesWFA.Forms
 {
     public class Formularios
     {

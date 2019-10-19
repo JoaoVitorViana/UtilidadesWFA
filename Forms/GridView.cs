@@ -2,16 +2,15 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace UtilidadesWFA.Util
+namespace UtilidadesWFA.Forms
 {
-	public class GridView
+    public class GridView
 	{
 		public static void Layout(DataGridView dtGrid, int pTamanhoFonte = 12)
 		{
 			dtGrid.DefaultCellStyle.Font = new Font("Calibri", pTamanhoFonte);
 			dtGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Calibri", pTamanhoFonte);
 		}
-
 		public static string ClickEdit(object sender, DataGridViewCellEventArgs e, int index = 0)
 		{
 			var senderGrid = (DataGridView)sender;
@@ -20,7 +19,6 @@ namespace UtilidadesWFA.Util
 
 			return null;
 		}
-
         public static List<string> GetCheckItens(DataGridView dtGrid, int indexCheckBox = 0, int indexValor = 1)
         {
             var ret = new List<string>();

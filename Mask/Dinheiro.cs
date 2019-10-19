@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace UtilidadesWFA.Util.Mask
+namespace UtilidadesWFA.Mask
 {
 	public class Dinheiro
 	{

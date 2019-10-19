@@ -74,16 +74,17 @@
     <Compile Include="Db\Parametro.cs" />
     <Compile Include="Db\SqlLite.cs" />
     <Compile Include="Db\TpBanco.cs" />
+    <Compile Include="Io.cs" />
+    <Compile Include="Mask\Dinheiro.cs" />
+    <Compile Include="Mask\Numeros.cs" />
+    <Compile Include="Mask\Telefone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\DataPicker.cs" />
-    <Compile Include="Util\Dropdown.cs" />
-    <Compile Include="Util\Formularios.cs" />
-    <Compile Include="Util\GridView.cs" />
-    <Compile Include="Util\Io.cs" />
-    <Compile Include="Util\Mask\Dinheiro.cs" />
-    <Compile Include="Util\Mask\Numeros.cs" />
-    <Compile Include="Util\Mask\Telefone.cs" />
-    <Compile Include="Util\Nfe.cs" />
+    <Compile Include="Forms\DataPicker.cs" />
+    <Compile Include="Forms\Dropdown.cs" />
+    <Compile Include="Forms\Formularios.cs" />
+    <Compile Include="Forms\GridView.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="Validacoes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -65,7 +65,7 @@ namespace UtilidadesWFA.Db
             {
                 throw ex;
             }
-            return null;
+            return retorno;
         }
         public int ExecuteNonQuery(string pComandoSQL, List<DBParametros> pParametros = null)
         {

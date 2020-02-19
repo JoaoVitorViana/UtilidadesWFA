@@ -42,6 +42,12 @@
     <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\Projetos\ufmt.forms\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\Projetos\ufmt.forms\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -57,6 +63,7 @@
       <HintPath>packages\System.Data.SQLite.Linq.1.0.111.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -70,9 +77,11 @@
     <Compile Include="Db\DBParametros.cs" />
     <Compile Include="Db\GenericCommand.cs" />
     <Compile Include="Db\GenericSqlLite.cs" />
+    <Compile Include="Db\GenericSqlServer.cs" />
     <Compile Include="Db\Operador.cs" />
     <Compile Include="Db\Parametro.cs" />
     <Compile Include="Db\SqlLite.cs" />
+    <Compile Include="Db\SqlServer.cs" />
     <Compile Include="Db\TpBanco.cs" />
     <Compile Include="Io.cs" />
     <Compile Include="Mask\Dinheiro.cs" />

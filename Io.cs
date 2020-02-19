@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
+using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 
 namespace UtilidadesWFA
@@ -26,5 +29,22 @@ namespace UtilidadesWFA
         }
         public static string GetValueComboBoxString(ComboBox cb) => (cb.SelectedIndex >= 0) ? cb.SelectedValue.ToString() : null;
         public static string GetValorRS(decimal? pValor) => pValor != null ? $@"{Convert.ToDouble(pValor):C}" : "";
+        public static DataTable GetExcel(FileStream pStream, string pExtensao)
+        {
+            IExcelDataReader excelReader = null;
+
+            //1. Reading from a binary Excel file ('97-2003 format; *.xls)
+            if (pExtensao == ".xls")
+                excelReader = ExcelReaderFactory.CreateBinaryReader(pStream);
+            else
+                //2. lendo arquivo OpenXml do Excel(2007 format; *.xlsx)
+                excelReader = ExcelReaderFactory.CreateOpenXmlReader(pStream);
+
+            //Cria o DataSet  
+            DataSet DsResultado = excelReader.AsDataSet();
+
+            //Convert o DataSet para Datatable
+            return DsResultado.Tables[0];
+        }
     }
 }

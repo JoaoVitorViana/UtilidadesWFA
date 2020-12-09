@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="Db\DBParametros.cs" />
     <Compile Include="Db\GenericCommand.cs" />
+    <Compile Include="Db\GenericMySql.cs" />
     <Compile Include="Db\GenericSqlLite.cs" />
     <Compile Include="Db\GenericSqlServer.cs" />
     <Compile Include="Db\MySql.cs" />

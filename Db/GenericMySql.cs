@@ -9,11 +9,11 @@ namespace UtilidadesWFA.Db
     {
         private string ParametroBanco = "@";
         private MySql Conexao;
-        public GenericMySql(string pServidor, string pUsuario = "root", string pSenha = null)
+        public GenericMySql(string pServidor, string pDataBase, string pUsuario = "root", string pSenha = null)
         {
-            Conexao = new MySql(pServidor, pUsuario, pSenha);
+            Conexao = new MySql(pServidor, pDataBase, pUsuario, pSenha);
         }
-        public List<T> GetSelect<T>(string pComando, List<DBParametros> pParametros)
+        public List<T> GetSelect<T>(string pComando, List<DBParametros> pParametros = null)
         {
             try
             {
@@ -25,11 +25,11 @@ namespace UtilidadesWFA.Db
                 throw ex;
             }
         }
-        public T Salvar<T>(T pObjeto, string pDataBase)
+        public T Salvar<T>(T pObjeto)
         {
             try
             {
-                GenericCommand.Generic<T> Ger = new GenericCommand.Generic<T>(pObjeto, pDataBase + "." + typeof(T).Name + " ", ParametroBanco, "; SELECT LAST_INSERT_ID();");
+                GenericCommand.Generic<T> Ger = new GenericCommand.Generic<T>(pObjeto, typeof(T).Name + " ", ParametroBanco, "; SELECT LAST_INSERT_ID();");
                 if (Ger.CamposPrimaryKeys.Count > 0 && !Ger.Update)
                     Ger.CamposPrimaryKeys[0].SetValue(pObjeto, Convert.ToInt32(Conexao.ExecuteScalar(Ger.Query, Ger.Parametros)));
                 else
@@ -41,11 +41,11 @@ namespace UtilidadesWFA.Db
                 throw ex;
             }
         }
-        public string Deletar<T>(T pObjeto, string pDataBase)
+        public string Deletar<T>(T pObjeto)
         {
             try
             {
-                GenericCommand.Generic<T> Ger = new GenericCommand.Generic<T>(pObjeto, pDataBase + "." + typeof(T).Name, ParametroBanco);
+                GenericCommand.Generic<T> Ger = new GenericCommand.Generic<T>(pObjeto, typeof(T).Name, ParametroBanco);
                 Conexao.ExecuteNonQuery(Ger.Query, Ger.Parametros);
                 return "Deletado com sucesso";
             }
@@ -54,11 +54,11 @@ namespace UtilidadesWFA.Db
                 throw ex;
             }
         }
-        public List<T> GetItens<T>(List<Parametro> pParametros, string pDataBase, int pTop = 0, string pOrderBy = "")
+        public List<T> GetItens<T>(List<Parametro> pParametros = null, int pTop = 0, string pOrderBy = "")
         {
             StringBuilder sbQuery = new StringBuilder();
             sbQuery.AppendLine("SELECT * ");
-            sbQuery.AppendLine("FROM " + pDataBase + "." + typeof(T).Name);
+            sbQuery.AppendLine("FROM " + typeof(T).Name);
             sbQuery.AppendLine("WHERE 1=1");
 
             List<DBParametros> pmts = null;
@@ -79,11 +79,11 @@ namespace UtilidadesWFA.Db
 
             return GetSelect<T>(sbQuery.ToString(), pmts);
         }
-        public T GetItem<T>(List<Parametro> pParametros, string pDataBase)
+        public T GetItem<T>(List<Parametro> pParametros)
         {
             try
             {
-                List<T> lista = GetItens<T>(pParametros, pDataBase);
+                List<T> lista = GetItens<T>(pParametros);
                 return (lista.Count > 0) ? lista[0] : Activator.CreateInstance<T>();
             }
             catch (Exception ex)

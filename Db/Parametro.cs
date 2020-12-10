@@ -96,6 +96,9 @@ namespace UtilidadesWFA.Db
                     case TpBanco.Sqlite:
                         CampoVarivel = "DATE(" + pParametro + pCampo + ")";
                         break;
+                    case TpBanco.MySql:
+                        CampoVarivel = $"STR_TO_DATE({pParametro}{pCampo},'%d-%m-%Y')";
+                        break;
                     default:
                         throw new NotImplementedException();
                 }
@@ -109,6 +112,9 @@ namespace UtilidadesWFA.Db
                         break;
                     case TpBanco.Sqlite:
                         CampoVarivel = "DATETIME(" + pParametro + pCampo + ")";
+                        break;
+                    case TpBanco.MySql:
+                        CampoVarivel = $"STR_TO_DATE({pParametro}{pCampo},'%Y-%m-%d %H:%i:%s')";
                         break;
                     default:
                         throw new NotImplementedException();

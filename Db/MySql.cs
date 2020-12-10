@@ -11,11 +11,12 @@ namespace UtilidadesWFA.Db
         protected MySqlCommand Cmd;
         protected MySqlTransaction Tra = null;
 
-        private MySqlConnection RetornaConexao(string pConexao, string pUsuario, string pSenha)
+        private MySqlConnection RetornaConexao(string pConexao, string pDataBase, string pUsuario, string pSenha)
         {
             MySqlConnectionStringBuilder Connection = new MySqlConnectionStringBuilder();
             Connection.Server = pConexao;
             Connection.UserID = pUsuario;
+            Connection.Database = pDataBase;
             if (!string.IsNullOrWhiteSpace(pSenha))
                 Connection.Password = pSenha;
 
@@ -24,12 +25,12 @@ namespace UtilidadesWFA.Db
             return oSqlConn;
         }
 
-        public MySql(string pServer, string pUsuario = "root", string pSenha = null)
+        public MySql(string pServer, string pDataBase, string pUsuario = "root", string pSenha = null)
         {
             try
             {
                 Conn = new MySqlConnection();
-                Conn = RetornaConexao(pServer, pUsuario, pSenha);
+                Conn = RetornaConexao(pServer, pDataBase, pUsuario, pSenha);
                 Cmd = new MySqlCommand("", Conn);
                 Cmd.CommandTimeout = 100000;
             }

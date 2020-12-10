@@ -42,14 +42,22 @@ namespace UtilidadesWFA.Db
 
         public void AbreConexao()
         {
-            if (Conn.State != ConnectionState.Open)
-                Conn.Open();
+            try
+            {
+                if (Conn.State != ConnectionState.Open)
+                    Conn.Open();
+            }
+            catch { throw new Exception("Erro ao conectar no banco de dados"); }
         }
 
         public void FechaConexao()
         {
-            if (Conn.State == ConnectionState.Open)
-                Conn.Close();
+            try
+            {
+                if (Conn.State == ConnectionState.Open)
+                    Conn.Close();
+            }
+            catch { throw new Exception("Erro ao conectar no banco de dados"); }
         }
 
         public DataSet ExecuteDataSet(string pComandoSQL, List<DBParametros> pParametros = null)

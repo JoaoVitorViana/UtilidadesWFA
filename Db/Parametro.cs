@@ -58,6 +58,9 @@ namespace UtilidadesWFA.Db
                     case TpBanco.Sqlite:
                         CampoTabela = "DATE(" + pCampo + ")";
                         break;
+                    case TpBanco.MySql:
+                        CampoTabela = "CONVERT(" + pCampo + ", DATE)";
+                        break;
                     default:
                         throw new NotImplementedException();
                 }
@@ -71,6 +74,9 @@ namespace UtilidadesWFA.Db
                         break;
                     case TpBanco.Sqlite:
                         CampoTabela = "DATETIME(" + pCampo + ")";
+                        break;
+                    case TpBanco.MySql:
+                        CampoTabela = "CONVERT(" + pCampo + ", DATETIME)";
                         break;
                     default:
                         throw new NotImplementedException();
